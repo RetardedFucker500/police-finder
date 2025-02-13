@@ -1,18 +1,22 @@
 const express = require("express");
-const http = require("http");
+const fs = require("fs");
 const path = require("path");
-const axios = require("axios");
 
 const app = express();
+const PORT = 8080;
 
-const ip = '0.0.0.0';
-const port = 8080;
+app.get("/", (req, res) => {
+    const directoryPath = __dirname;
 
-app.use(express.static(path.join(__dirname, "dist")));
+    fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+            return res.status(500).send("Unable to scan directory");
+        }
+        let fileList = files.map(file => `<li>${file}</li>`).join("");
+        res.send(`<h1>Files in Directory:</h1><ul>${fileList}</ul>`);
+    });
+});
 
-const server = http.createServer(app);
-
-server.listen((ip, port) => {
-    console.log("OPEN SOURCE SERVER NOW RUNNING.");
-    console.log("THIS IS A OPEN SOURCE SOFTWARE OUR OFFICAL WEBSITE IS: oxyummaps.com");
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
 });
