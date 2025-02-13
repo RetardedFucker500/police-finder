@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>police finder</title>
+    <title>Police Finder</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map { height: 500px; }
+    </style>
 </head>
 <body>
-    
+    <h1>Find Nearby Police Stations</h1>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        fetch(`https://overpass-api.de/api/interpreter?data=[out:json];node["amenity"="police"](around:5000,51.505,-0.09);out;`)
+            .then(response => response.json())
+            .then(data => {
+                data.elements.forEach(station => {
+                    L.marker([station.lat, station.lon])
+                        .addTo(map)
+                        .bindPopup(station.tags.name || 'Police Station');
+                });
+            });
+    </script>
 </body>
 </html>
