@@ -1,0 +1,11 @@
+{
+    "name": "police-finder",
+    "description": "a app were it locates police cars on google maps.",
+    "version": "1.0.0",
+    "author": "Sean G",
+
+    "scripts": {
+        "install": "npm install express http path axios",
+        "start": "node index.js"
+    }
+}
