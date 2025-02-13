@@ -1,0 +1,6 @@
+apis:
+
+https://api.geoapify.com/v1/routing?waypoints=${userLocation[0]},${userLocation[1]}|${destLat},${destLon}&mode=drive&apiKey=${geoapifyApiKey}
+
+geoapify is for routing location from location
+
