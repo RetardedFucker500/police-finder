@@ -13,5 +13,6 @@ app.use(express.static(path.join(__dirname, "dist")));
 const server = http.createServer(app);
 
 server.listen((ip, port) => {
-    console.log("server is now running.");
+    console.log("OPEN SOURCE SERVER NOW RUNNING.");
+    console.log("THIS IS A OPEN SOURCE SOFTWARE OUR OFFICAL WEBSITE IS: oxyummaps.com");
 });

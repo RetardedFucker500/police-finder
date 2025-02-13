@@ -1,6 +1,6 @@
 {
     "name": "police-finder",
-    "description": "a app were it locates police cars on google maps.",
+    "description": "we provide geolocation technology that is comfortable and easier to use and better has more settings.",
     "version": "1.0.0",
     "author": "Sean G",
     "scripts": {
